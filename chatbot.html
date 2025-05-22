@@ -118,15 +118,15 @@
           },
           body: JSON.stringify({ message: userMessage }),
         });
-
+      
         const data = await res.json();
-        chatWindow.innerHTML += `<div class='message bot'>${data.response}</div>`;
+        chatWindow.innerHTML += `<div class='message bot'>${data.response || "Sorry, I couldn't find a suitable answer."}</div>`;
         chatWindow.scrollTop = chatWindow.scrollHeight;
       } catch (error) {
-        chatWindow.innerHTML += `<div class='message bot'>Sorry, something went wrong. Please try again later.</div>`;
-        chatWindow.scrollTop = chatWindow.scrollHeight;
+        chatWindow.innerHTML += `<div class='message bot'>Sorry, something went wrong. Please try again later or contact the college directly.</div>`;
+        console.error("Chatbot error:", error);
       }
-    });
+      
   </script>
 </body>
 </html>
